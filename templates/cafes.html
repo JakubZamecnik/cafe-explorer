@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Seznam kaváren{% endblock %}
+
+{% block content %}
+
+
+
+<p class="intro">
+    The best work and study-friendly cafes, restaurants, libraries, and hotel lobbies in London. <br>
+    Expand your coworking map with our list of casual spots with free and reliable Wi-Fi, ample power sockets, and comfy seating areas!
+</p>
+
+
+<ul class="cafe-list">
+    {% for cafe in cafes %}
+    <li class="cafe-box">
+        <div class="cafe-card">
+
+            {% if cafe.img_url %}
+            <div class="cafe-img">
+                <img src="{{ cafe.img_url }}" alt="{{ cafe.name }}">
+            </div>
+            {% endif %}
+
+            <div class="cafe-info">
+
+
+                <h3>
+                    <a href="{{ cafe.map_url }}" target="_blank" class="cafe-link">
+                        {{ cafe.name }} 🔗
+                    </a>
+                </h3>
+
+
+                <p><i class="fa fa-location-arrow"></i> {{ cafe.location }}</p>
+
+                <p>Seats: {{ cafe.seats }} | Coffee: {{ cafe.coffee_price }}</p>
+
+                <p>
+                    Wifi: {{ "✅" if cafe.has_wifi else "❌" }},
+                    Toilet: {{ "✅" if cafe.has_toilet else "❌" }},
+                    Sockets: {{ "✅" if cafe.has_sockets else "❌" }},
+                    Calls: {{ "📞" if cafe.can_take_calls else "❌" }}
+                </p>
+
+            </div>
+        </div>
+    </li>
+    {% else %}
+    <li>No cafes found.</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

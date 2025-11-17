@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Add New Cafe{% endblock %}
+
+{% block content %}
+
+<div style="text-align: center;">
+
+    <h2>Add a New Cafe</h2>
+
+    <form action="{{ url_for('add_cafe') }}" method="POST" style="display: inline-block; text-align: left; max-width: 400px; width: 100%;">
+
+        <label>Name:</label><br>
+        <input type="text" name="name" required style="width: 100%;"><br><br>
+
+        <label>Map URL:</label><br>
+        <input type="url" name="map_url" required style="width: 100%;"><br><br>
+
+        <label>Image URL:</label><br>
+        <input type="url" name="img_url" required style="width: 100%;"><br><br>
+
+        <label>Location:</label><br>
+        <input type="text" name="loc" required style="width: 100%;"><br><br>
+
+        <label>Seats:</label><br>
+        <input type="text" name="seats" placeholder="e.g. 20-30" required style="width: 100%;"><br><br>
+
+        <label>Coffee Price:</label><br>
+        <input type="text" name="coffee_price" placeholder="£2.50" style="width: 100%;"><br><br>
+
+        <h3>Features</h3>
+
+        <label><input type="checkbox" name="wifi"> Wifi</label><br>
+        <label><input type="checkbox" name="toilet"> Toilet</label><br>
+        <label><input type="checkbox" name="sockets"> Power Sockets</label><br>
+        <label><input type="checkbox" name="calls"> Can Take Calls</label><br><br>
+
+        <button type="submit" style="width: 100%;">Add Cafe</button>
+
+    </form>
+</div>
+
+{% endblock %}
